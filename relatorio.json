@@ -1,0 +1,80 @@
+[
+    {
+        "model": "inclusionai/ling-3.0-flash:free",
+        "status": "success",
+        "time_seconds": 42.26,
+        "file": "resultados_benchmark/inclusionai_ling-3.0-flash_free.html"
+    },
+    {
+        "model": "poolside/laguna-s-2.1:free",
+        "status": "failed",
+        "time_seconds": 0.34,
+        "error": "429 Client Error: Too Many Requests for url: https://openrouter.ai/api/v1/chat/completions"
+    },
+    {
+        "model": "poolside/laguna-xs-2.1:free",
+        "status": "success",
+        "time_seconds": 246.88,
+        "file": "resultados_benchmark/poolside_laguna-xs-2.1_free.html"
+    },
+    {
+        "model": "cohere/north-mini-code:free",
+        "status": "success",
+        "time_seconds": 36.72,
+        "file": "resultados_benchmark/cohere_north-mini-code_free.html"
+    },
+    {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "success",
+        "time_seconds": 220.72,
+        "file": "resultados_benchmark/nvidia_nemotron-3-ultra-550b-a55b_free.html"
+    },
+    {
+        "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "status": "success",
+        "time_seconds": 17.94,
+        "file": "resultados_benchmark/nvidia_nemotron-3-nano-omni-30b-a3b-reasoning_free.html"
+    },
+    {
+        "model": "poolside/laguna-m.1:free",
+        "status": "failed",
+        "time_seconds": 0.35,
+        "error": "429 Client Error: Too Many Requests for url: https://openrouter.ai/api/v1/chat/completions"
+    },
+    {
+        "model": "google/gemma-4-26b-a4b-it:free",
+        "status": "success",
+        "time_seconds": 69.81,
+        "file": "resultados_benchmark/google_gemma-4-26b-a4b-it_free.html"
+    },
+    {
+        "model": "google/gemma-4-31b-it:free",
+        "status": "failed",
+        "time_seconds": 0.55,
+        "error": "429 Client Error: Too Many Requests for url: https://openrouter.ai/api/v1/chat/completions"
+    },
+    {
+        "model": "nvidia/nemotron-3-super-120b-a12b:free",
+        "status": "success",
+        "time_seconds": 20.45,
+        "file": "resultados_benchmark/nvidia_nemotron-3-super-120b-a12b_free.html"
+    },
+    {
+        "model": "nvidia/nemotron-3-nano-30b-a3b:free",
+        "status": "success",
+        "time_seconds": 43.94,
+        "file": "resultados_benchmark/nvidia_nemotron-3-nano-30b-a3b_free.html"
+    },
+    {
+        "model": "nvidia/nemotron-nano-9b-v2:free",
+        "status": "success",
+        "time_seconds": 68.44,
+        "file": "resultados_benchmark/nvidia_nemotron-nano-9b-v2_free.html"
+    },
+    {
+        "model": "openai/gpt-oss-20b:free",
+        "status": "success",
+        "time_seconds": 65.59,
+        "file": "resultados_benchmark/openai_gpt-oss-20b_free.html"
+    }
+]

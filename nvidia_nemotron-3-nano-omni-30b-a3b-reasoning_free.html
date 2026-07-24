@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pé da Mata - Chocolates de Origem</title>
+  <style>
+    /* Reset & base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #fafafa; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 90%; max-width: 1200px; margin: auto; padding: 2rem 0; }
+
+    /* Colors */
+    :root {
+      --cacao: #5d4037;
+      --cacao-light: #8d6e63;
+      --earth: #c79a6b;
+      --leaf: #4e342e;
+      --green: #81c784;
+      --bg-light: #f5f5f5;
+    }
+
+    /* Header */
+    .site-header {
+      background: var(--cacao);
+      color: #fff;
+      padding: 1rem 0;
+    }
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-size: 1.5rem; font-weight: bold; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      color: #fff;
+      font-weight: 500;
+      transition: opacity .3s;
+    }
+    .nav-links a:hover { opacity: 0.8; }
+
+    /* Hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1589308078055-8c6b1c0f4e3a?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 6rem 0;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-title { font-size: 2.5rem; margin-bottom: .5rem; }
+    .hero-subtitle { font-size: 1.2rem; margin-bottom: 1.5rem; }
+    .hero-btn {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      padding: .8rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background .3s;
+    }
+    .hero-btn:hover { background: #66bb6a; }
+
+    /* Sections */
+    section { padding: 4rem 0; }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--cacao);
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+      text-align: center;
+      transition: transform .3s;
+    }
+    .feature-card:hover { transform: translateY(-5px); }
+    .feature-card h3 { margin: 1rem 0; color: var(--cacao); }
+    .feature-card p { font-size: .95rem; color: #555; }
+
+    .about {
+      background: var(--bg-light);
+      color: #333;
+    }
+    .about .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1 1 300px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    .about-img {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+    .about-img img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--cacao);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 0;
+    }
+    .cta h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .cta p { font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .cta .btn {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      padding: .8rem 1.8rem;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background .3s;
+    }
+    .cta .btn:hover { background: #66bb6a; }
+
+    /* Footer */
+    .site-footer {
+      background: var(--cacao-light);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 0;
+      font-size: .9rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2rem; }
+      .hero-subtitle { font-size: 1rem; }
+      .nav-links { gap: 1rem; }
+      .about { flex-direction: column; text-align: center; }
+      .about-text, .about-img { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="logo">Pé da Mata</div>
+    <nav class="nav-links">
+      <a href="#home">Início</a>
+      <a href="#features">Coleções</a>
+      <a href="#about">Sobre</a>
+      <a href="#contact">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <h1 class="hero-title">Chocolates de Origem</h1>
+    <p class="hero-subtitle">Do cacau das árvores ao seu paladar, artesanalmente produzido no Sul da Bahia.</p>
+    <a href="#contact" class="hero-btn">Descubra Nossos Chocolates</a>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <h2 class="section-title">Nossos Diferenciais</h2>
+    <div class="feature-card">
+      <h3>Tree to Bar</h3>
+      <p>Do grão ao tablete, controlamos cada etapa para garantir qualidade e sabor único.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Ingredientes Naturais</h3>
+      <p>Usamos cacau 100% orgânico e ingredientes locais, sem aditivos.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Sustentabilidade</h3>
+      <p>Práticas de cultivo que preservam a mata e beneficiam a comunidade.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-text">
+      <h2 class="section-title">Sobre a Pé da Mata</h2>
+      <p>Nas profundezas da Mata Atlântica baiana, cultivamos cacau de alta qualidade com respeito à natureza. Nosso processo artesanal, da colheita ao temperamento, preserva o aroma e a textura autêntica do chocolate de origem.</p>
+    </div>
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1541339907198-e24e3c59c71c?auto=format&fit=crop&w=800&q=80" alt="Cacau na fazenda">
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Pronto para provar?</h2>
+    <p>Entre em contato e descubra a experiência Pé da Mata.</p>
+    <a href="#contact" class="btn">Fale Conosco</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 Pé da Mata – Chocolates de Origem. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>

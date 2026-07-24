@@ -1,0 +1,294 @@
+</a> (but we need a CTA link maybe "Saiba Mais").
+
+Better create simple "Saiba Mais" linking to details.
+
+Add more CTA perhaps "Compre Agora" linking to purchase.
+
+Let's just include a button.
+
+<div class="product-actions"><a href="#" class="btn btn-primary">Compre Agora</a></div>
+
+We should keep it clean.
+
+Also footer.
+
+<section id="contato" class="section contato">
+<div class="container">
+<h2>Entre em Contato</h2>
+<form action="#" method="post" class="contact-form">
+<input type="email" name="email" placeholder="Seu e‑mail" required>
+<button type="submit" class="btn btn-primary">Receber Updates</button>
+</form>
+<p>© 2025 Pé da Mata – Todos os direitos reservados.</p>
+</div>
+</section>
+
+Add some smooth scroll CSS.
+
+Make button style.
+
+Add responsive styling.
+
+Now produce final code block.
+
+We need to ensure semantic classes.
+
+Ok let's craft CSS:
+
+:root { --cocoa: #5B4636; --leaf: #6B8E23; --bg: #F5F0EB; --text: #333; --accent: #8b5e3c; }
+
+body {font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); margin:0; }
+
+h1,h2,h3 {font-family: 'Playfair Display', serif;}
+
+.nav {background: var(--cocoa);}
+
+.nav ul {display:flex; justify-content:center; gap:2rem; list-style:none; margin:0; padding:0.5rem 0;}
+
+.hero {background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><text x=%220%22 y=%2280%22 fill=%22%235B4636%22 font-size=%2280%22>Pé%20da%20Mata</text></svg>') center/cover no-repeat; color:#fff; text-align:center; padding:6rem 1rem; }
+
+.hero h1 {font-size:2.8rem; margin-bottom:0.5rem;}
+
+.hero p {font-size:1.2rem; margin-bottom:1.5rem;}
+
+.cta-primary {background: var(--leaf); color:#fff; padding:0.8rem 1.5rem; text-decoration:none; border-radius:0.4rem; font-weight:600; transition:background 0.3s;}
+
+.cta-primary:hover {background: #557c1f;}
+
+.container {max-width:1200px; margin:auto; padding:0 1rem;}
+
+.section {padding:4rem 0; text-align:center;}
+
+.section h2 {font-size:2rem; margin-bottom:1rem; color:var(--cocoa);}
+
+.product-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem; margin-top:2rem;}
+
+.product-card {background:#fff; border:1px solid var(--cocoa); border-radius:0.5rem; overflow:hidden; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+
+.product-card h3 {font-size:1.5rem; color:var(--cocoa); margin:0.8rem 1rem;}
+
+.product-card p {margin:0.5rem 1rem 1rem;}
+
+.product-actions {padding:0.5rem 1rem;}
+
+.btn {display:inline-block; background: var(--accent); color:#fff; padding:0.6rem 1.2rem; border-radius:0.3rem; text-decoration:none; font-weight:600; transition:background 0.3s;}
+
+.btn:hover {background:#7a5030;}
+
+.contact-form {display:flex; flex-direction:column; max-width:400px; margin:auto; gap:0.8rem;}
+
+.contact-form input {padding:0.8rem; border:1px solid #ccc; border-radius:0.3rem; font-size:1rem;}
+
+.contact-form button {align-self:start;}
+
+@media (min-width:768px) {
+.nav ul {gap:3rem;}
+.hero h1 {font-size:3.5rem;}
+.hero p {font-size:1.3rem;}
+.section {padding:6rem 0;}
+}
+Add more.
+
+Make everything functional.
+
+Now generate final code block.
+
+No extra text. Provide only code block.
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pé da Mata – Chocolate Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --cocoa:#5B4636;
+      --leaf:#6B8E23;
+      --accent:#8b5e3c;
+      --bg:#F5F0EB;
+      --text:#333;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit;}
+    header.hero{
+      background:#000 url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><text x=%220%22 y=%2280%22 fill=%22%235B4636%22 font-size=%2280%22 font-family=%22Playfair%20Display%22>Pé%20da%20Mata</text></svg>') center/cover no-repeat;
+      color:#fff;
+      text-align:center;
+      padding:6rem 1rem;
+    }
+    header.hero h1{font-family:'Playfair Display',serif;font-size:2.8rem;margin-bottom:.5rem;}
+    header.hero p{font-size:1.2rem;margin-bottom:1.5rem;}
+    .cta-primary{
+      background:var(--leaf);
+      color:#fff;
+      padding:.8rem 1.5rem;
+      border-radius:.4rem;
+      font-weight:600;
+      transition:.3s;
+    }
+    .cta-primary:hover{background:#557c1f;}
+    .container{max-width:1200px;margin:auto;padding:0 1rem;}
+    nav.nav{
+      background:var(--cocoa);
+      padding:.6rem 0;
+    }
+    nav.nav ul{
+      display:flex;
+      justify-content:center;
+      gap:2rem;
+      list-style:none;
+      font-weight:600;
+    }
+    nav.nav a{color:#fff;}
+    section.section{
+      padding:4rem 0;
+      text-align:center;
+    }
+    section.section h2{
+      font-family:'Playfair Display',serif;
+      font-size:2rem;
+      margin-bottom:1rem;
+      color:var(--cocoa);
+    }
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:1.5rem;
+      margin-top:2rem;
+    }
+    .product-card{
+      background:#fff;
+      border:1px solid var(--cocoa);
+      border-radius:.5rem;
+      overflow:hidden;
+      box-shadow:0 4px 6px rgba(0,0,0,.1);
+    }
+    .product-card h3{font-size:1.5rem;color:var(--cocoa);margin:.8rem 1rem;}
+    .product-card p{margin:.5rem 1rem 1rem;}
+    .product-actions{padding:.5rem 1rem;}
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:#fff;
+      padding:.6rem 1.2rem;
+      border-radius:.3rem;
+      font-weight:600;
+      transition:.3s;
+    }
+    .btn:hover{background:#7a5030;}
+    .contact-form{
+      max-width:400px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:.8rem;
+    }
+    .contact-form input{
+      padding:.8rem;
+      border:1px solid #ccc;
+      border-radius:.3rem;
+      font-size:1rem;
+    }
+    .contact-form button{align-self:start;}
+    @media(min-width:768px){
+      .hero h1{font-size:3.5rem;}
+      .hero p{font-size:1.3rem;}
+      .nav ul{gap:3rem;}
+      .section{padding:6rem 0;}
+    }
+    footer{background:var(--cocoa);color:#fff;text-align:center;padding:2rem 0;}
+    footer p{margin:0;}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Pé da Mata</h1>
+      <p>Chocolate premium bean‑to‑bar, origem rara no Sul da Bahia</p>
+      <a href="#sabores" class="cta-primary">Explorar Sabores</a>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="container">
+      <ul>
+        <li><a href="#quem-somos">Quem Somos</a></li>
+        <li><a href="#processo">Processo</a></li>
+        <li><a href="#sabores">Sabores</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section id="quem-somos" class="section">
+      <div class="container">
+        <h2>Quem Somos</h2>
+        <p>Nosso chocolate nasce nas plantio de cacau de Barro Preto, cultivado de forma sustentável e fermentado com carinho para revelar seu aroma único.</p>
+      </div>
+    </section>
+
+    <section id="processo" class="section process">
+      <div class="container">
+        <h2>Do Bean ao Bar</h2>
+        <p>Da colheita cuidadosa à torra perfeita, cada etapa é monitorada para garantir a qualidade e o sabor autêntico do chocolate de origem.</p>
+      </div>
+    </section>
+
+    <section id="sabores" class="section sabores">
+      <div class="container">
+        <h2>Nossos Sabores</h2>
+        <div class="product-grid">
+          <article class="product-card">
+            <h3>Clássico 70%</h3>
+            <p>Chocolate puro com 70% de cacao, equilíbrio perfeito entre amargor e doçura.</p>
+            <div class="product-actions">
+              <a href="#" class="btn">Saiba Mais</a>
+            </div>
+          </article>
+          <article class="product-card">
+            <h3>Noz Scotch</h3>
+            <p>Blend de noz seleccionada e cacau, toque crocante e aroma amanteigado.</p>
+            <div class="product-actions">
+              <a href="#" class="btn">Saiba Mais</a>
+            </div>
+          </article>
+          <article class="product-card">
+            <h3>Laranja & Canela</h3>
+            <p>Infusão natural de laranja e canela, frescor cítrico com calor especiado.</p>
+            <div class="product-actions">
+              <a href="#" class="btn">Saiba Mais</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="section contato">
+      <div class="container">
+        <h2>Entre em Contato</h2>
+        <form class="contact-form" action="#" method="post">
+          <input type="email" name="email" placeholder="Seu e‑mail" required>
+          <button type="submit" class="btn">Receber Updates</button>
+        </form>
+        <p>© 2025 Pé da Mata – Todos os direitos reservados.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Desenvolvido com ❤️ para os amantes de chocolate premium.</p>
+  </footer>
+</body>
+</html>

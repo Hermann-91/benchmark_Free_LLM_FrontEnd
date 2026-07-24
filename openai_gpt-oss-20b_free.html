@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Pé da Mata – Chocolates Premium</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --cacao-escuro:#4A2C2E;
+    --cacao-claro:#7B4C2C;
+    --terra:#B08D57;
+    --verde-folha:#3E7C3E;
+    --branco:#FDFDFD;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial,Helvetica,sans-serif;background:#FEF7E3;color:#333;line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;height:auto;display:block;}
+
+  header{background:var(--cacao-escuro);color:var(--branco);padding:1rem;}
+  nav{display:flex;justify-content:flex-end;gap:1rem;}
+  nav a{padding:0.5rem 1rem;border-radius:4px;background:var(--verde-folha);color:var(--branco);transition:background .3s;}
+  nav a:hover{background:var(--cacao-claro);}
+
+  .hero{
+    background:url('https://images.unsplash.com/photo-1505998667295-27c22512bf73?auto=format&auto=compress&fit=crop&w=1200&q=80') center/cover no-repeat;
+    height:60vh;display:flex;align-items:center;justify-content:center;
+    text-align:center;color кандид:var(--branco);background:rgba(0,0,0,.4);
+  }
+  .hero h1{font-size:3rem;margin-bottom:.5rem;}
+  .hero p{font-size:1.2rem;margin-bottom:1.5rem;}
+  .cta-btn{
+    padding:.75rem 1.5rem;border:none;border-radius:5px;background:var(--verde-folha);
+    color:var(--branco);font-weight:600;font-size:1rem;cursor:pointer;transition:background .3s;
+  }
+  .cta-btn:hover{background:var(--cacao-claro);}
+
+  main{padding:2rem;}
+  section{margin-bottom:4rem;}
+  .sobre{display:flex;flex-wrap:wrap;gap:2rem;align-items:center;}
+  .sobre img{flex:1 1 300px;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);}
+  .sobre .texto{flex:1 1 300px;max-width:600px;}
+  .sobre h2{margin-bottom:.5rem;font-size:2rem;color:var(--cacao-escuro);}
+  .sobre p{margin-bottom:1rem;}
+
+embuart .produto{display:flex;flex-wrap:wrap;gap:2rem;align-items:center;}
+.produto articlePf{flex:1 1 300px;background:var(--branco);border-radius:8px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.1);}
+.produto articlePf img{width:100%;}
+.produto articlePf .info{padding:1rem;}
+.produto articlePf .info h3{fonthti:var(--cacao-escuro);margin-bottom:.5rem;}
+.produto articlePf .info p{margin-bottom:.75rem;}
+.produto articlePf .info .cta-btn{width:100%;}
+
+footer{background:var(--cacao-escніверс);color:var(--branco);text-align:center;padding:1rem;}
+footer p{font-size:.9rem;}
+
+/* Responsive */
+@media (max-width:768px){
+  .hero h1{font-size:2.2rem;}
+  .hero p{font-size:1rem;}
+  header nav{justify-content:center;}
+  .sobre{flex-direction:column;}
+  .sobre img,.sobre .texto{flex:1 1 100%;}
+  .produto{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<section class="hero" aria-label="Chocolates Pé da Mata">
+  <div>
+    <h1>Pé da Mata</h1>
+    <p>Delicie-se com o sabor intenso da cacau cultivado em Barro Preto, Sul da Bahia.</p>
+    <a href="#produtos" class="cta-btn">Descubra</a>
+  </div>
+</section>
+
+<main>
+  <section id="sobre" class="sobre">
+ ceiling>
+    <img src="https://images.unsplash.com/photo-1540997310659-32e59f8bec35?auto=format&auto=compress&fit=crop&w=800&q=80" alt="Intolerância à dieta de chocolate">
+    <div class="texto">
+      <h2>Chocolates Tree to Bar</h2>
+      <p>Na Pé da Mata, seguimos todo o processo do cultivo à barra, garantindoतक अनूठा sabor e qualidade garantida. Cada grão conta a história da floresta e da cultura baiana.</p>
+      <a href="#contato" class="cta-btn">Fale conosco</a>
+    </div>
+  </section>
+
+  <section id="produtos" class="produto">
+    <article>
+      <img src="https://images.unsplash.com/photo-1589578844666-02e6db24bcc4?auto=format&auto=compress&fit=crop&w=800&q=80" alt="Chocolate ao leite">
+      <div class="info">
+      <h3>Chocolate ao leite Barro Preto</h3>
+      <p>Suave, cremoso e com um leve toque de flor de candeia, esse chocolate oferece uma experiência inesquecível.</p>
+      <a href="#" class="cta-btn">Comprar</a>
+      </div>
+    </article>
+
+    <article>
+      <img src="https://images.unsplash.com/photo-1589072925214-02 ýokary?auto=format&auto=compress&fit=crop&w=800&q=80" alt="Chocolate meio amargo">
+      <div class="info">
+        <h3>Chocolate meio amargo Reserva</h3>
+        <p>Intenso, com notas de ervas e um final leve de especiarius, perfeito para quem busca sofisticação.</p>
+        <a href="#" class="cta-btn">Comprar</a>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer id="contato">
+  <p>© 2026 Pé da Mata – Made with love in Barro Preto, Bahia.</p>
+</footer>
+</body>
+</html>

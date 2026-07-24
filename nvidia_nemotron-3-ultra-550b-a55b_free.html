@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pé da Mata - Chocolates Premium Tree to Bar do Sul da Bahia. Origem, sabor e sustentabilidade direto da fazenda para sua mesa.">
+  <title>Pé da Mata | Chocolates de Origem Tree to Bar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================
+       DESIGN TOKENS (CSS Custom Properties)
+       ========================================= */
+    :root {
+      /* Colors - Earth & Cocoa Palette */
+      --color-cocoa-900: #1a1310;   /* Almost black / Darkest Cocoa */
+      --color-cocoa-700: #3d2b22;   /* Dark Chocolate */
+      --color-cocoa-500: #5d4037;   /* Medium Cocoa */
+      --color-cocoa-300: #8d6e63;   /* Light Cocoa / Text Muted */
+      --color-cocoa-100: #d7ccc8;   /* Cocoa Butter / Borders */
+      
+      --color-leaf-700: #2e5d3a;    /* Deep Forest */
+      --color-leaf-500: #4caf50;    /* Vibrant Leaf */
+      --color-leaf-300: #81c784;    /* Light Leaf */
+      --color-leaf-50:  #e8f5e9;    /* Leaf Tint */
+
+      --color-earth-100: #f5f0eb;   /* Warm White / Background */
+      --color-earth-200: #ebe0d8;   /* Sand / Section Alt */
+      --color-earth-300: #dcc7b8;   /* Terracotta Light */
+
+      --color-gold: #c9a86c;        /* Premium Accent */
+      --color-white: #ffffff;
+
+      /* Typography */
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      --fs-fluid-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+      --fs-fluid-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+      --fs-fluid-lg: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+      --fs-fluid-xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+      --fs-fluid-2xl: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+
+      /* Spacing Scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 5rem;
+      --space-4xl: 8rem;
+
+      /* Layout */
+      --container-max: 1200px;
+      --container-padding: var(--space-lg);
+      --header-height: 80px;
+
+      /* Border Radius */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 2px rgba(26, 19, 16, 0.05);
+      --shadow-md: 0 4px 12px rgba(26, 19, 16, 0.08);
+      --shadow-lg: 0 12px 32px rgba(26, 19, 16, 0.12);
+
+      /* Transitions */
+      --transition-fast: 150ms ease;
+      --transition-base: 300ms ease;
+      --transition-slow: 500ms ease;
+    }
+
+    /* =========================================
+       RESET & BASE
+       ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    
+    body {
+      font-family: var(--font-body);
+      font-size: var(--fs-fluid-base);
+      line-height: 1.6;
+      color: var(--color-cocoa-900);
+      background-color: var(--color-earth-100);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+    
+    a { color: inherit; text-decoration: none; }
+    
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    
+    ul, ol { list-style: none; }
+    
+    address { font-style: normal; }
+
+    /* =========================================
+       UTILITY / HELPER CLASSES
+       ========================================= */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-inline: auto;
+      padding-inline: var(--container-padding);
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+
+    .visually-hidden { @extend .sr-only; } /* Fallback for non-SASS, just use sr-only */
+
+    /* Typography Helpers */
+    .heading-1 { font-family: var(--font-heading); font-size: var(--fs-fluid-2xl); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
+    .heading-2 { font-family: var(--font-heading); font-size: var(--fs-fluid-xl); font-weight: 600; line-height: 1.2; }
+    .heading-3 { font-family: var(--font-heading); font-size: var(--fs-fluid-lg); font-weight: 500; line-height: 1.3; }
+    .text-lg { font-size: var(--fs-fluid-lg); }
+    .text-sm { font-size: var(--fs-fluid-sm); }
+    .font-medium { font-weight: 500; }
+    .font-semibold { font-weight: 600; }
+    .italic { font-style: italic; }
+    .text-center { text-align: center; }
+    .text-cocoa { color: var(--color-cocoa-700); }
+    .text-leaf { color: var(--color-leaf-700); }
+    .text-gold { color: var(--color-gold); }
+    .text-muted { color: var(--color-cocoa-300); }
+
+    /* Flex Helpers */
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-sm { gap: var(--space-sm); }
+    .gap-md { gap: var(--space-md); }
+    .gap-lg { gap: var(--space-lg); }
+    .gap-xl { gap: var(--space-xl); }
+
+    /* =========================================
+       COMPONENTS: BUTTONS
+       ========================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding: var(--space-md) var(--space-xl);
+      font-size: var(--fs-fluid-sm);
+      font-weight: 600;
+      line-height: 1;
+      border-radius: var(--radius-full);
+      transition: all var(--transition-base);
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background-color: var(--color-cocoa-700);
+      color: var(--color-white);
+      border: 2px solid var(--color-cocoa-700);
+    }
+    .btn--primary:hover,
+    .btn--primary:focus-visible {
+      background-color: var(--color-cocoa-900);
+      border-color: var(--color-cocoa-900);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn--primary:active { transform: translateY(0); }
+
+    .btn--secondary {
+      background-color: transparent;
+      color: var(--color-cocoa-700);
+      border: 2px solid var(--color-cocoa-300);
+    }
+    .btn--secondary:hover,
+    .btn--secondary:focus-visible {
+      border-color: var(--color-cocoa-700);
+      color: var(--color-cocoa-900);
+      background-color: var(--color-cocoa-100);
+    }
+
+    .btn--outline-light {
+      color: var(--color-white);
+      border: 2px solid var(--color-white);
+    }
+    .btn--outline-light:hover,
+    .btn--outline-light:focus-visible {
+      background-color: var(--color-white);
+      color: var(--color-cocoa-900);
+    }
+
+    .btn--leaf {
+      background-color: var(--color-leaf-700);
+      color: var(--color-white);
+      border: 2px solid var(--color-leaf-700);
+    }
+    .btn--leaf:hover,
+    .btn--leaf:focus-visible {
+      background-color: var(--color-leaf-500);
+      border-color: var(--color-leaf-500);
+    }
+
+    .btn__icon { width: 1.25em; height: 1.25em; flex-shrink: 0; transition: transform var(--transition-fast); }
+    .btn:hover .btn__icon { transform: translateX(4px); }
+
+    /* =========================================
+       COMPONENTS: HEADER / NAV
+       ========================================= */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-height);
+      z-index: 1000;
+      background-color: rgba(245, 240, 235, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-cocoa-100);
+      transition: box-shadow var(--transition-base), background-color var(--transition-base);
+    }
+    .header--scrolled { box-shadow: var(--shadow-sm); background-color: rgba(245, 240, 235, 0.98); }
+
+    .header__inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-family: var(--font-heading);
+      font-size: var(--fs-fluid-lg);
+      font-weight: 600;
+      color: var(--color-cocoa-900);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo__mark { width: 36px; height: 36px; display: block; }
+    .logo__text { display: none; }
+    @media (min-width: 480px) { .logo__text { display: block; } }
+
+    .nav { display: none; } /* Hidden by default, shown via JS on mobile or flex on desktop */
+    @media (min-width: 768px) {
+      .nav { display: flex; align-items: center; gap: var(--space-xl); }
+      .nav__list { display: flex; gap: var(--space-lg); }
+      .nav__link {
+        font-size: var(--fs-fluid-sm);
+        font-weight: 500;
+        color: var(--color-cocoa-500);
+        position: relative;
+        padding: var(--space-xs) 0;
+        transition: color var(--transition-fast);
+      }
+      .nav__link::after {
+        content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+        background-color: var(--color-leaf-500);
+        transition: width var(--transition-base);
+      }
+      .nav__link:hover, .nav__link:focus-visible { color: var(--color-cocoa-900); }
+      .nav__link:hover::after, .nav__link:focus-visible::after { width: 100%; }
+      .nav__cta { display: flex; align-items: center; }
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px; height: 20px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      z-index: 1100;
+    }
+    @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
+    .mobile-menu-btn__line {
+      display: block; width: 100%; height: 2px;
+      background-color: var(--color-cocoa-900);
+      border-radius: 2px;
+      transition: all var(--transition-base);
+      transform-origin: center;
+    }
+    .mobile-menu-btn[aria-expanded="true"] .mobile-menu-btn__line:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .mobile-menu-btn[aria-expanded="true"] .mobile-menu-btn__line:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn[aria-expanded="true"] .mobile-menu-btn__line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    /* Mobile Nav Panel */
+    .mobile-nav {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: 100%; max-width: 320px;
+      background: var(--color-white);
+      padding: calc(var(--header-height) + var(--space-xl)) var(--space-xl) var(--space-xl);
+      transform: translateX(100%);
+      transition: transform var(--transition-slow) cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-lg);
+      z-index: 1050;
+      overflow-y: auto;
+    }
+    .mobile-nav--open { transform: translateX(0); }
+    .mobile-nav__list { display: flex; flex-direction: column; gap: var(--space-xs); margin-bottom: var(--space-xl); }
+    .mobile-nav__link {
+      display: block; padding: var(--space-md) var(--space-sm);
+      font-size: var(--fs-fluid-lg); font-weight: 500;
+      color: var(--color-cocoa-700);
+      border-radius: var(--radius-md);
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+    .mobile-nav__link:hover, .mobile-nav__link:focus-visible {
+      background: var(--color-earth-100); color: var(--color-leaf-700);
+    }
+    .mobile-nav__cta { display: flex; flex-direction: column; gap: var(--space-md); }
+    .mobile-nav__cta .btn { width: 100%; }
+
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(26, 19, 16, 0.5);
+      opacity: 0; visibility: hidden;
+      transition: opacity var(--transition-base), visibility var(--transition-base);
+      z-index: 1040;
+    }
+    .overlay--visible { opacity: 1; visibility: visible; }
+
+    /* =========================================
+       COMPONENTS: HERO
+       ========================================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--header-height);
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--color-earth-100) 0%, var(--color-earth-200) 100%);
+    }
+    .hero__background {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 800'%3E%3Cpath fill='%23dcc7b8' fill-opacity='0.15' d='M0,480L48,469.3C96,459,192,437,288,4408,437.3C224,437,240,459,336,469.3C432,480,528,480,576,474.7C624,469,672,459,768,448C864,437,960,427,1056,421.3C1152,416,1248,416,1344,421.3C1440,427,1440,480,1440,480L1440,800L0,800Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center bottom;
+      opacity: 0.6;
+    }
+    .hero__content { position: relative; z-index: 1; width: 100%; }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: var(--space-xs);
+      padding: var(--space-xs) var(--space-md);
+      background: var(--color-leaf-50);
+      color: var(--color-leaf-700);
+      border-radius: var(--radius-full);
+      font-size: var(--fs-fluid-sm);
+      font-weight: 600;
+      margin-bottom: var(--space-lg);
+      width: fit-content;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .hero__title { margin-bottom: var(--space-md); color: var(--color-cocoa-900); animation: fadeInUp 0.8s ease 0.1s forwards; opacity: 0; }
+    .hero__title em { font-style: italic; color: var(--color-leaf-700); }
+    .hero__subtitle {
+      max-width: 60ch;
+      font-size: var(--fs-fluid-lg);
+      color: var(--color-cocoa-500);
+      margin-bottom: var(--space-xl);
+      line-height: 1.7;
+      animation: fadeInUp 0.8s ease 0.2s forwards; opacity: 0;
+    }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-md); animation: fadeInUp 0.8s ease 0.3s forwards; opacity: 0; }
+    .hero__scroll-indicator {
+      position: absolute; bottom: var(--space-xl); left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: var(--space-xs);
+      color: var(--color-cocoa-300);
+      font-size: var(--fs-fluid-sm);
+      animation: bounce 2s infinite 1s;
+      z-index: 1;
+    }
+    .hero__scroll-indicator svg { width: 24px; height: 24px; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* =========================================
+       COMPONENTS: SECTION (Generic)
+       ========================================= */
+    .section { padding: var(--space-3xl) 0; }
+    @media (min-width: 768px) { .section { padding: var(--space-4xl) 0; } }
+    .section--alt { background-color: var(--color-white); border-top: 1px solid var(--color-cocoa-100); border-bottom: 1px solid var(--color-cocoa-100); }
+    .section__header { text-align: center; margin-bottom: var(--space-2xl); max-width: 700px; margin-inline: auto; }
+    .section__tag { display: inline-block; font-size: var(--fs-fluid-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-leaf-500); margin-bottom: var(--space-sm); }
+    .section__title { margin-bottom: var(--space-md); }
+    .section__description { color: var(--color-cocoa-500); font-size: var(--fs-fluid-lg); }
+
+    /* =========================================
+       COMPONENTS: FEATURES / VALUES
+       ========================================= */
+    .features { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+    @media (min-width: 640px) { .features { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .features { grid-template-columns: repeat(4, 1fr); } }
+
+    .feature-card {
+      padding: var(--space-xl);
+      background: var(--color-white);
+      border: 1px solid var(--color-cocoa-100);
+      border-radius: var(--radius-lg);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-earth-300); }
+    .feature-card__icon {
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--color-leaf-50);
+      color: var(--color-leaf-700);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-md);
+    }
+    .feature-card__icon svg { width: 24px; height: 24px; }
+    .feature-card__title { font-family: var(--font-heading); font-size: var(--fs-fluid-base); font-weight: 600; color: var(--color-cocoa-900); margin-bottom: var(--space-xs); }
+    .feature-card__text { font-size: var(--fs-fluid-sm); color: var(--color-cocoa-500); line-height: 1.6; }
+
+    /* =========================================
+       COMPONENTS: PRODUCTS / CATALOG
+       ========================================= */
+    .product-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); }
+    @media (min-width: 640px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .product-card {
+      display: flex; flex-direction: column;
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-cocoa-100);
+      transition: box-shadow var(--transition-base), transform var(--transition-base);
+    }
+    .product-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .product-card__media { position: relative; aspect-ratio: 1 / 1; background: var(--color-earth-200); overflow: hidden; }
+    .product-card__image { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+    .product-card:hover .product-card__image { transform: scale(1.05); }
+    .product-card__badge {
+      position: absolute; top: var(--space-md); left: var(--space-md);
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--color-cocoa-900); color: var(--color-white);
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      border-radius: var(--radius-full);
+    }
+    .product-card__content { padding: var(--space-lg); display: flex; flex-direction: column; flex: 1; }
+    .product-card__origin { font-size: var(--fs-fluid-sm); color: var(--color-leaf-700); font-weight: 500; margin-bottom: var(--space-xs); }
+    .product-card__name { font-family: var(--font-heading); font-size: var(--fs-fluid-lg); font-weight: 600; color: var(--color-cocoa-900); margin-bottom: var(--space-xs); }
+    .product-card__notes { font-size: var(--fs-fluid-sm); color: var(--color-cocoa-300); font-style: italic; margin-bottom: var(--space-md); flex-grow: 1; }
+    .product-card__footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--color-cocoa-100); }
+    .product-card__price { font-family: var(--font-heading); font-size: var(--fs-fluid-xl); font-weight: 600; color: var(--color-cocoa-700); }
+
+    /* =========================================
+       COMPONENTS: STORY / ABOUT
+       ========================================= */
+    .story { display: grid; grid-template-columns: 1fr; gap: var(--space-2xl); align-items: center; }
+    @media (min-width: 900px) { .story { grid-template-columns: 1fr 1fr; } }
+    .story__media { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/5; background: var(--color-earth-200); }
+    .story__image { width: 100%; height: 100%; object-fit: cover; }
+    .story__badge-abs {
+      position: absolute; bottom: var(--space-xl); right: var(--space-xl);
+      background: var(--color-white); padding: var(--space-lg);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+      max-width: 200px; text-align: center;
+    }
+    .story__badge-number { font-family: var(--font-heading); font-size: clamp(3rem, 5vw, 5rem); font-weight: 600; color: var(--color-leaf-700); line-height: 1; }
+    .story__badge-label { font-size: var(--fs-fluid-sm); color: var(--color-cocoa-500); font-weight: 500; }
+    .story__content { display: flex; flex-direction: column; gap: var(--space-lg); }
+    .story__text p { margin-bottom: var(--space-md); color: var(--color-cocoa-500); line-height: 1.8; }
+    .story__text p:last-child { margin-bottom: 0; }
+    .story__highlights { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-md); }
+    .story__highlight-item { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); background: var(--color-leaf-50); border-radius: var(--radius-full); font-size: var(--fs-fluid-sm); color: var(--color-leaf-700); font-weight: 500; }
+
+    /* =========================================
+       COMPONENTS: TESTIMONIALS
+       ========================================= */
+    .testimonials { position: relative; }
+    .testimonials__track { display: flex; gap: var(--space-lg); overflow-x: auto; scroll-snap-type: x mandatory; padding: var(--space-md) var(--space-xs) var(--space-xl); scroll-padding: 0 var(--container-padding); -webkit-overflow-scrolling: touch; }
+    .testimonials__track::-webkit-scrollbar { display: none; }
+    @media (min-width: 768px) { .testimonials__track { overflow: visible; display: grid; grid-template-columns: repeat(3, 1fr); } }
+    .testimonial-card {
+      flex: 0 0 100%; scroll-snap-align: start;
+      background: var(--color-white); border: 1px solid var(--color-cocoa-100);
+      border-radius: var(--radius-lg); padding: var(--space-xl);
+      display: flex; flex-direction: column; min-height: 100%;
+    }
+    @media (min-width: 768px) { .testimonial-card { flex: 1 1 0; } }
+    .testimonial-card__stars { color: var(--color-gold); margin-bottom: var(--space-md); letter-spacing: 2px; }
+    .testimonial-card__quote { font-size: var(--fs-fluid-base); line-height: 1.7; color: var(--color-cocoa-700); margin-bottom: var(--space-lg); flex-grow: 1; }
+    .testimonial-card__author { display: flex; align-items: center; gap: var(--space-md); }
+    .testimonial-card__avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-cocoa-100); }
+    .testimonial-card__name { font-weight: 600; color: var(--color-cocoa-900); }
+    .testimonial-card__role { font-size: var(--fs-fluid-sm); color: var(--color-cocoa-300); }
+
+    /* =========================================
+       COMPONENTS: NEWSLETTER / CTA SECTION
+       ========================================= */
+    .newsletter {
+      background: linear-gradient(135deg, var(--color-cocoa-900) 0%, var(--color-cocoa-700) 100%);
+      color: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl) var(--space-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter::before {
+      content: ''; position: absolute; top: -50%; right: -10%; width: 60%; height: 200%;
+      background: radial-gradient(circle, var(--color-leaf-700) 0%, transparent 70%);
+      opacity: 0.1; pointer-events: none;
+    }
+    .newsletter__content { position: relative; z-index: 1; max-width: 500px; margin: 0 auto; }
+    .newsletter__title { color: var(--color-white); margin-bottom: var(--space-sm); }
+    .newsletter__text { color: var(--color-cocoa-100); margin-bottom: var(--space-xl); }
+    .newsletter__form { display: flex; flex-direction: column; gap: var(--space-md); }
+    @media (min-width: 480px) { .newsletter__form { flex-direction: row; } }
+    .newsletter__input {
+      flex: 1; padding: var(--space-md) var(--space-lg);
+      border: 2px solid var(--color-cocoa-500);
+      background: rgba(255,255,255,0.05);
+      color: var(--color-white);
+      border-radius: var(--radius-full);
+      font-size: var(--fs-fluid-base);
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+    .newsletter__input::placeholder { color: var(--color-cocoa-300); }
+    .newsletter__input:focus { outline: none; border-color: var(--color-leaf-300); background: rgba(255,255,255,0.1); }
+    .newsletter__submit { flex-shrink: 0; }
+    .newsletter__disclaimer { font-size: var(--fs-fluid-sm); color: var(--color-cocoa-300); margin-top: var(--space-md); }
+
+    /* =========================================
+       COMPONENTS: FOOTER
+       ========================================= */
+    .footer { background: var(--color-cocoa-900); color: var(--color-cocoa-100); padding: var(--space-3xl) 0 var(--space-xl); }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-2xl); margin-bottom: var(--space-2xl); }
+    @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+    .footer__brand { max-width: 300px; }
+    .footer__logo { margin-bottom: var(--space-md); }
+    .footer__tagline { font-size: var(--fs-fluid-sm); color: var(--color-cocoa-300); line-height: 1.7; margin-bottom: var(--space-lg); }
+    .footer__social { display: flex; gap: var(--space-md); }
+    .footer__social-link { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-cocoa-700); border-radius: 50%; color: var(--color-cocoa-100); transition: all var(--transition-fast); }
+    .footer__social-link:hover { background: var(--color-leaf-500); color: var(--color-white); transform: translateY(-2px); }
+    .footer__social-link svg { width: 20px; height: 20px; }
+    .footer__nav-title { font-family: var(--font-heading); font-size: var(--fs-fluid-base); font-weight: 600; color: var(--color-white); margin-bottom: var(--space-md); }
+    .footer__nav-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+    .footer__nav-link { font-size: var(--fs-fluid-sm); color: var(--color-cocoa-300); transition: color var(--transition-fast); }
+    .footer__nav-link:hover { color: var(--color-leaf-300); }
+    .footer__contact-item { display: flex; align-items: flex-start; gap: var(--space-sm); font-size: var(--fs-fluid-sm); color: var(--color-cocoa-300); margin-bottom: var(--space-md); line-height: 1.6; }
+    .footer__contact-icon { flex-shrink: 0; margin-top: 2px; color: var(--color-leaf-300); }
+    .footer__bottom { padding-top: var(--space-xl); border-top: 1px solid var(--color-cocoa-700); display: flex; flex-direction: column; align-items: center; gap: var(--space-md); text-align: center; font-size: var(--fs-fluid-sm); color: var(--color-cocoa-300); }
+    @media (min-width: 768px) { .footer__bottom { flex-direction: row; justify-content: space-between; } }
+    .footer__legal { display: flex; gap: var(--space-lg); }
+    .footer__legal-link { color: var(--color-cocoa-300); transition: color var(--transition-fast); }
+    .footer__legal-link:hover { color: var(--color-white); }
+
+    /* =========================================
+       ANIMATIONS (Intersection Observer Hooks)
+       ========================================= */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal--visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 100ms; }
+    .reveal-delay-2 { transition-delay: 200ms; }
+    .reveal-delay-3 { transition-delay: 300ms; }
+    .reveal-delay-4 { transition-delay: 400ms; }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================
+       HEADER / NAVIGATION
+       ========================================= -->
+  <header class="header" id="header" role="banner">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="Pé da Mata - Página Inicial">
+        <svg class="logo__mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 4C12.95 4 4 12.95 4 24C4 35.05 12.95 44 24 44C35.05 44 44 35.05 44 24C44 12.95 35.05 4 24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M24 14V34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M14 24H34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M30 18C30 18 34 22 24 30C14 22 18 18 18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo__text">Pé da Mata</span>
+      </a>
+
+      <nav class="nav" id="navDesktop" role="navigation" aria-label="Navegação principal">
+        <ul class="nav__list">
+          <li><a href="#produtos" class="nav__link">Chocolates</a></li>
+          <li><a href="#historia" class="nav__link">Nossa História</a></li>
+          <li><a href="#valores" class="nav__link">Valores</a></li>
+          <li><a href="#depoimentos" class="nav__link">Depoimentos</a></li>
+        </ul>
+        <div class="nav__cta">
+          <a href="#contato" class="btn btn--primary">Assine e Ganhe 10%</a>
+        </div>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menu">
+        <span class="mobile-menu-btn__line"></span>
+        <span class="mobile-menu-btn__line"></span>
+        <span class="mobile-menu-btn__line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Nav Panel -->
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
+    <nav class="mobile-nav" id="mobileNav" role="navigation" aria-label="Menu mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="#produtos" class="mobile-nav__link">Nossos Chocolates</a></li>
+        <li><a href="#historia" class="mobile-nav__link">Nossa História</a></li>
+        <li><a href="#valores" class="mobile-nav__link">Valores & Origem</a></li>
+        <li><a href="#depoimentos" class="mobile-nav__link">Quem Provou</a></li>
+        <li><a href="#contato" class="mobile-nav__link">Contato & Localização</a></li>
+      </ul>
+      <div class="mobile-nav__cta">
+        <a href="#produtos" class="btn btn--primary">Ver Catálogo</a>
+        <a href="#contato" class="btn btn--secondary">Fale Conosco</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- =========================================
+         HERO SECTION
+         ========================================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__background" aria-hidden="true"></div>
+      <div class="container hero__content">
+        <span class="hero__badge" aria-label="Selos de qualidade">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          Tree to Bar • Origem Controlada • Sul da Bahia
+        </span>
+        <h1 class="heading-1 hero__title" id="hero-title">Chocolate de <em>Origem</em>, Feito com Respeito à Terra</h1>
+        <p class="hero__subtitle">Da fazenda em Barro Preto para o mundo. Cacau fino, processo artesanal e sabor puro em cada barra. Conheça a essência do Sul da Bahia.</p>
+        <div class="hero__actions">
+          <a href="#produtos" class="btn btn--primary">
+            Descobrir Sabores
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#historia" class="btn btn--secondary">Nossa Jornada</a>
+        </div>
+      </div>
+      <div class="hero__scroll-indicator" aria-hidden="true">
+        <span>Explorar</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+    </section>
+
+    <!-- =========================================
+         VALUES / FEATURES SECTION
+         ========================================= -->
+    <section class="section" id="valores" aria-labelledby="valores-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <span class="section__tag">Nossos Pilares</span>
+          <h2 class="section__title heading-2" id="valores-title">O que torna o Pé da Mata único</h2>
+          <p class="section__description">Cada decisão, do plantio à embalagem, reflete nosso compromisso com a qualidade e a floresta.</p>
+        </header>
+        <div class="features" role="list">
+          <article class="feature-card reveal reveal-delay-1" role="listitem">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+            </div>
+            <h3 class="feature-card__title">Tree to Bar Autêntico</h3>
+            <p class="feature-card__text">Controlamos todo o processo: do cultivo das mudas à temperagem final. Sem intermediários, garantindo rastreabilidade total.</p>
+          </article>
+          <article class="feature-card reveal reveal-delay-2" role="listitem">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+            </div>
+            <h3 class="feature-card__title">Cacau Fino Baiano</h3>
+            <p class="feature-card__text">Variedades selecionadas de cacau (PH16, CEPEC 2002) cultivadas em sistema cabruca, preservando a Mata Atlântica nativa.</p>
+          </article>
+          <article class="feature-card reveal reveal-delay-3" role="listitem">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+            <h3 class="feature-card__title">Sustentabilidade Real</h3>
+            <p class="feature-card__text">Agrofloresta produtiva, embalagens compostáveis e comércio justo com as famílias produtoras da região.</p>
+          </article>
+          <article class="feature-card reveal reveal-delay-4" role="listitem">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <h3 class="feature-card__title">Fermentação Artesanal</h3>
+            <p class="feature-card__text">Caixas de madeira nobre, tempo controlado e monitoramento sensorial para desenvolver notas complexas e únicas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         PRODUCTS SECTION
+         ========================================= -->
+    <section class="section section--alt" id="produtos" aria-labelledby="produtos-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <span class="section__tag">Catálogo</span>
+          <h2 class="section__title heading-2" id="produtos-title">Nossos Chocolates</h2>
+          <p class="section__description">Editions limitadas e linhas fixas. Escolha sua jornada sensorial.</p>
+        </header>
+        <div class="product-grid" role="list">
+          <!-- Product 1 -->
+          <article class="product-card reveal reveal-delay-1" role="listitem">
+            <div class="product-card__media">
+              <span class="product-card__badge">Linha Clássica</span>
+              <img class="product-card__image" src="https://placehold.co/600x600/3d2b22/fff?text=70%25+Cacau" alt="Barra de chocolate 70% cacau em embalagem kraft minimalista" loading="lazy">
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__origin">Barro Preto, BA • Safra 2024</p>
+              <h3 class="product-card__name">Identidade 70%</h3>
+              <p class="product-card__notes">Notas de frutas vermelhas, mel de cacau e final longo com toque de castanha.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">R$ 38,00</span>
+                <button class="btn btn--primary" aria-label="Adicionar Identidade 70% ao carrinho">Comprar</button>
+              </div>
+            </div>
+          </article>
+          <!-- Product 2 -->
+          <article class="product-card reveal reveal-delay-2" role="listitem">
+            <div class="product-card__media">
+              <span class="product-card__badge">Edição Limitada</span>
+              <img class="product-card__image" src="https://placehold.co/600x600/2e5d3a/fff?text=85%25+Cacau" alt="Barra de chocolate 85% cacau edição especial" loading="lazy">
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__origin">Fazenda Pé da Mata • Micro-lote</p>
+              <h3 class="product-card__name">Essência 85%</h3>
+              <p class="product-card__notes">Intenso, floral e terroso. Baixa acidez, textura aveludada. Para puristas.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">R$ 52,00</span>
+                <button class="btn btn--primary" aria-label="Adicionar Essência 85% ao carrinho">Comprar</button>
+              </div>
+            </div>
+          </article>
+          <!-- Product 3 -->
+          <article class="product-card reveal reveal-delay-3" role="listitem">
+            <div class="product-card__media">
+              <span class="product-card__badge">Linha Clássica</span>
+              <img class="product-card__image" src="https://placehold.co/600x600/5d4037/fff?text=55%25+Leite" alt="Barra de chocolate ao leite 55% cacau" loading="lazy">
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__origin">Barro Preto, BA • Leite A2</p>
+              <h3 class="product-card__name">Doçura 55% Leite A2</h3>
+              <p class="product-card__notes">Caramelo, maltado e leve toque de café. Leite A2 de fazenda vizinha.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">R$ 36,00</span>
+                <button class="btn btn--primary" aria-label="Adicionar Doçura 55% ao carrinho">Comprar</button>
+              </div>
+            </div>
+          </article>
+          <!-- Product 4 -->
+          <article class="product-card reveal reveal-delay-4" role="listitem">
+            <div class="product-card__media">
+              <span class="product-card__badge">Inclusão</span>
+              <img class="product-card__image" src="https://placehold.co/600x600/8d6e63/fff?text=70%25+Nibs" alt="Chocolate 70% com nibs de cacau torrados" loading="lazy">
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__origin">Nibs da Própria Safra</p>
+              <h3 class="product-card__name">Crocante 70% c/ Nibs</h3>
+              <p class="product-card__notes">Textura crocante, notas tostadas e explosão de sabor puro do cacau.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">R$ 42,00</span>
+                <button class="btn btn--primary" aria-label="Adicionar Crocante 70% ao carrinho">Comprar</button>
+              </div>
+            </div>
+          </article>
+          <!-- Product 5 -->
+          <article class="product-card reveal reveal-delay-1" role="listitem">
+            <div class="product-card__media">
+              <span class="product-card__badge">Vegano</span>
+              <img class="product-card__image" src="https://placehold.co/600x600/4caf50/fff?text=60%25+Coco" alt="Chocolate 60% com leite de coco" loading="lazy">
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__origin">Leite de Coco Orgânico</p>
+              <h3 class="product-card__name">Tropical 60% Coco</h3>
+              <p class="product-card__notes">Cremoso, exótico e equilibrado. Doçura natural do coco queimado.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">R$ 40,00</span>
+                <button class="btn btn--primary" aria-label="Adicionar Tropical 60% ao carrinho">Comprar</button>
+              </div>
+            </div>
+          </article>
+          <!-- Product 6 -->
+          <article class="product-card reveal reveal-delay-2" role="listitem">
+            <div class="product-card__media">
+              <span class="product-card__badge">Kit Degustação</span>
+              <img class="product-card__image" src="https://placehold.co/600x600/1a1310/fff?text=Kit+4+Barras" alt="Caixa de madeira com 4 mini barras sortidas" loading="lazy">
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__origin">Seleção do Mestre Cacau</p>
+              <h3 class="product-card__name">Coleção Origem (4x25g)</h3>
+              <p class="product-card__notes">Experiência completa: 70%, 85%, 55% Leite, 70% Nibs. Presente ideal.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">R$ 98,00</span>
+                <button class="btn btn--leaf" aria-label="Adicionar Kit Degustação ao carrinho">Levar Kit</button>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="text-center reveal reveal-delay-3" style="margin-top: var(--space-xl);">
+          <a href="#produtos" class="btn btn--secondary">Ver Todos os Produtos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         STORY / ABOUT SECTION
+         ========================================= -->
+    <section class="section" id="historia" aria-labelledby="historia-title">
+      <div class="container">
+        <div class="story">
+          <div class="story__media reveal">
+            <img class="story__image" src="https://placehold.co/800x1000/2e5d3a/fff?text=Fazenda+Pé+da+Mata" alt="Vista aérea da fazenda Pé da Mata no Sul da Bahia, cabruca e mata atlântica" loading="lazy">
+            <div class="story__badge-abs" aria-hidden="true">
+              <div class="story__badge-number">12</div>
+              <div class="story__badge-label">Anos de Dedicação</div>
+            </div>
+          </div>
+          <div class="story__content reveal reveal-delay-1">
+            <header class="section__header" style="text-align: left; margin-bottom: 0; max-width: none;">
+              <span class="section__tag" style="display: inline-block;">Nossa História</span>
+              <h2 class="section__title heading-2" id="historia-title">Da Semente à Barra,<br>Uma História de Paciência</h2>
+            </header>
+            <div class="story__text">
+              <p>Em 2012, aos pés da Mata Atlântica em Barro Preto, plantamos as primeiras mudas de cacau fino com um sonho: fazer o melhor chocolate do Brasil, respeitando a floresta que nos abraça.</p>
+              <p>Hoje, cada barra carrega o terroir único do Sul da Bahia. Não compramos cacau — nós o cultivamos, fermentamos, secamos, torramos e transformamos. É o verdadeiro <strong>Tree to Bar</strong>: árvore à barra, sem atalhos.</p>
+            </div>
+            <div class="story__highlights">
+              <span class="story__highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                15 hectares de cabruca preservada
+              </span>
+              <span class="story__highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                3 variedades proprietárias
+              </span>
+              <span class="story__highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                0% aditivos artificiais
+              </span>
+            </div>
+            <a href="#valores" class="btn btn--secondary" style="width: fit-content; margin-top: var(--space-md);">Conheça Nosso Processo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         TESTIMONIALS SECTION
+         ========================================= -->
+    <section class="section section--alt" id="depoimentos" aria-labelledby="depoimentos-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <span class="section__tag">Reconhecimento</span>
+          <h2 class="section__title heading-2" id="depoimentos-title">O que dizem quem prova</h2>
+          <p class="section__description">Feedback de chefs, sommeliers e apaixonados por chocolate de origem.</p>
+        </header>
+        <div class="testimonials">
+          <div class="testimonials__track" role="list" aria-label="Depoimentos de clientes">
+            <!-- Testimonial 1 -->
+            <article class="testimonial-card reveal reveal-delay-1" role="listitem">
+              <div class="testimonial-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <blockquote class="testimonial-card__quote">"O Identidade 70% é a definição de equilíbrio. Acidez brilhante, corpo sedoso e um final que conta a história do terroir. Um dos melhores Tree to Bar do país."</blockquote>
+              <div class="testimonial-card__author">
+                <img class="testimonial-card__avatar" src="https://placehold.co/100x100/3d2b22/fff?text=RL" alt="" loading="lazy" aria-hidden="true">
+                <div>
+                  <p class="testimonial-card__name">Roberta Lima</p>
+                  <p class="testimonial-card__role">Sommelier de Chocolate • São Paulo</p>
+                </div>
+              </div>
+            </article>
+            <!-- Testimonial 2 -->
+            <article class="testimonial-card reveal reveal-delay-2" role="listitem">
+              <div class="testimonial-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <blockquote class="testimonial-card__quote">"Uso o Essência 85% na minha ganache assinatura. A pureza do cacau dispensa açúcar extra. Meus clientes sentem a diferença na primeira mordida."</blockquote>
+              <div class="testimonial-card__author">
+                <img class="testimonial-card__avatar" src="https://placehold.co/100x100/2e5d3a/fff?text=MS" alt="" loading="lazy" aria-hidden="true">
+                <div>
+                  <p class="testimonial-card__name">Marcelo Souza</p>
+                  <p class="testimonial-card__role">Chef Pâtissier • Rio de Janeiro</p>
+                </div>
+              </div>
+            </article>
+            <!-- Testimonial 3 -->
+            <article class="testimonial-card reveal reveal-delay-3" role="listitem">
+              <div class="testimonial-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <blockquote class="testimonial-card__quote">"Finalmente um chocolate ao leite que respeita o cacau. O Doçura 55% tem personalidade, não é só açúcar. Virou item obrigatório na minha despensa."</blockquote>
+              <div class="testimonial-card__author">
+                <img class="testimonial-card__avatar" src="https://placehold.co/100x100/5d4037/fff?text=CA" alt="" loading="lazy" aria-hidden="true">
+                <div>
+                  <p class="testimonial-card__name">Carla Andrade</p>
+                  <p class="testimonial-card__role">Food Writer • Belo Horizonte</p>
+                </div>
+              </div>
+            </article>
+            <!-- Testimonial 4 -->
+            <article class="testimonial-card reveal reveal-delay-4" role="listitem">
+              <div class="testimonial-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <blockquote class="testimonial-card__quote">"Visitei a fazenda em 2023. Ver a cabruca, as caixas de fermentação, o cuidado da equipe... explica o sabor. Transparência real, chocolate honesto."</blockquote>
+              <div class="testimonial-card__author">
+                <img class="testimonial-card__avatar" src="https://placehold.co/100x100/8d6e63/fff?text=JP" alt="" loading="lazy" aria-hidden="true">
+                <div>
+                  <p class="testimonial-card__name">João Pedro</p>
+                  <p class="testimonial-card__role">Eng. Agrônomo & Cliente • Salvador</p>
+                </div>
+              </div>
+            </article>
+            <!-- Testimonial 5 -->
+            <article class="testimonial-card reveal reveal-delay-1" role="listitem">
+              <div class="testimonial-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <blockquote class="testimonial-card__quote">"O kit degustação foi o melhor presente que dei para meu pai. Ele, que só comia chocolate suíço, disse: 'Brasileiro finalmente aprendeu a fazer chocolate'."</blockquote>
+              <div class="testimonial-card__author">
+                <img class="testimonial-card__avatar" src="https://placehold.co/100x100/4caf50/fff?text=FR" alt="" loading="lazy" aria-hidden="true">
+                <div>
+                  <p class="testimonial-card__name">Fernanda R.</p>
+                  <p class="testimonial-card__role">Designer • Curitiba</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         NEWSLETTER / CTA SECTION
+         ========================================= -->
+    <section class="section" id="contato" aria-labelledby="newsletter-title">
+      <div class="container">
+        <div class="newsletter reveal">
+          <div class="newsletter__content">
+            <h2 class="heading-2 newsletter__title" id="newsletter-title">Faça parte da colheita</h2>
+            <p class="newsletter__text">Receba acesso antecipado a micro-lotes, convites para visitas na fazenda e 10% na primeira compra.</p>
+            <form class="newsletter__form" action="#" method="POST" novalidate>
+              <label for="email" class="sr-only">Seu melhor e-mail</label>
+              <input type="email" id="email" name="email" class="newsletter__input" placeholder="seu@email.com" required autocomplete="email" aria-describedby="email-desc">
+              <button type="submit" class="btn btn--primary newsletter__submit">
+                Inscrever-me
+                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+            </form>
+            <p id="email-desc" class="newsletter__disclaimer">Respeitamos sua privacidade. Sem spam, apenas cacau. <a href="#" style="color: var(--color-leaf-300); text-decoration: underline;">Política de Privacidade</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="footer__logo logo" aria-label="Pé da Mata - Início">
+            <svg class="logo__mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M24 4C12.95 4 4 12.95 4 24C4 35.05 12.95 44 24 44C35.05 44 44 35.05 44 24C44 12.95 35.05 4 24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 14V34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M14 24H34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M30 18C30 18 34 22 24 30C14 22 18 18 18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="logo__text">Pé da Mata</span>
+          </a>
+          <p class="footer__tagline">Chocolate de origem Tree to Bar, cultivado e produzido no Sul da Bahia. Da nossa cabruca para sua mesa, com respeito à Mata Atlântica.</p>
+          <div class="footer__social" role="list" aria-label="Redes sociais">
+            <a href="#" class="footer__social-link" role="listitem" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="footer__social-link" role="listitem" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.44 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.44 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"></path><polygon points="10 15 15.5 12 10 9 10 15"></polygon></svg>
+            </a>
+            <a href="#" class="footer__social-link" role="listitem" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer__nav" aria-label="Navegação do rodapé">
+          <h3 class="footer__nav-title">Navegue</h3>
+          <ul class="footer__nav-list">
+            <li><a href="#produtos" class="footer__nav-link">Nossos Chocolates</a></li>
+            <li><a href="#historia" class="footer__nav-link">Nossa História</a></li>
+            <li><a href="#valores" class="footer__nav-link">Valores & Sustentabilidade</a></li>
+            <li><a href="#depoimentos" class="footer__nav-link">Depoimentos</a></li>
+            <li><a href="#" class="footer__nav-link">Clube de Assinatura</a></li>
+            <li><a href="#" class="footer__nav-link">Presentes Corporativos</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__nav" aria-label="Ajuda e Suporte">
+          <h3 class="footer__nav-title">Ajuda</h3>
+          <ul class="footer__nav-list">
+            <li><a href="#" class="footer__nav-link">Perguntas Frequentes</a></li>
+            <li><a href="#" class="footer__nav-link">Envio & Entrega</a></li>
+            <li><a href="#" class="footer__nav-link">Trocas e Devoluções</a></li>
+            <li><a href="#" class="footer__nav-link">Formas de Pagamento</a></li>
+            <li><a href="#" class="footer__nav-link">Fale Conosco</a></li>
+          </ul>
+        </nav>
+
+        <address class="footer__contact" aria-label="Contato e Localização">
+          <h3 class="footer__nav-title">Visite-nos</h3>
+          <div class="footer__contact-item">
+            <svg class="footer__contact-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div>
+              <p><strong>Fazenda Pé da Mata</strong></p>
+              <p>Rodovia BA-650, Km 12 - Zona Rural<br>Barro Preto, Bahia - CEP 45630-000</p>
+            </div>
+          </div>
+          <div class="footer__contact-item">
+            <svg class="footer__contact-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <div>
+              <p><strong>Atendimento</strong></p>
+              <p><a href="mailto:ola@pedamata.choc" class="footer__nav-link">ola@pedamata.choc</a><br><a href="tel:+5573999999999" class="footer__nav-link">+55 (73) 99999-9999</a></p>
+              <p style="font-size: 0.75rem; color: var(--color-cocoa-500); margin-top: 4px;">Seg a Sex: 8h às 17h | Sáb: 9h às 12h</p>
+            </div>
+          </div>
+        </address>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2024 Pé da Mata Chocolates. Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
+        <nav class="footer__legal" aria-label="Links legais">
+          <a href="#" class="footer__legal-link">Política de Privacidade</a>
+          <a href="#" class="footer__legal-link">Termos de Uso</a>
+          <a href="#" class="footer__legal-link">Acessibilidade</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================
+       JAVASCRIPT (Vanilla, Modular)
+       ========================================= -->
+  <script>
+    (function() {
+      'use strict';
+
+      // =========================================
+      // STATE & SELECTORS
+      // =========================================
+      const header = document.getElementById('header');
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('overlay');
+      const navLinks = document.querySelectorAll('.mobile-nav__link, .nav__link');
+      const revealElements = document.querySelectorAll('.reveal');
+
+      // =========================================
+      // MOBILE NAV TOGGLE
+      // =========================================
+      function toggleMobileNav(open) {
+        const isOpen = typeof open === 'boolean' ? open : mobileNav.classList.toggle('mobile-nav--open');
+        mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+        mobileNav.classList.toggle('mobile-nav--open', isOpen);
+        overlay.classList.toggle('overlay--visible', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+
+      mobileMenuBtn.addEventListener('click', () => toggleMobileNav());
+      overlay.addEventListener('click', () => toggleMobileNav(false));
+
+      // Close on link click (smooth scroll handled by CSS)
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 768) toggleMobileNav(false);
+        });
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('mobile-nav--open')) {
+          toggleMobileNav(false);
+          mobileMenuBtn.focus();
+        }
+      });
+
+      // =========================================
+      // HEADER SCROLL EFFECT
+      // =========================================
+      let lastScrollY = window.scrollY;
+      const handleHeaderScroll = () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > 50) {
+          header.classList.add('header--scrolled');
+        } else {
+          header.classList.remove('header--scrolled');
+        }
+        lastScrollY = currentScrollY;
+      };
+      window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+
+      // =========================================
+      // INTERSECTION OBSERVER FOR REVEAL ANIMATIONS
+      // =========================================
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal--visible');
+            // Optional: unobserve after reveal to save performance
+            // revealObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // =========================================
+      // FORM HANDLING (Newsletter)
+      // =========================================
+      const newsletterForm = document.querySelector('.newsletter__form');
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const submitBtn = newsletterForm.querySelector('.newsletter__submit');
+          const input = newsletterForm.querySelector('.newsletter__input');
+          
+          if (!input.checkValidity()) {
+            input.reportValidity();
+            return;
+          }
+
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<svg class="btn__icon spinner" viewBox="0 0 24 24" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="30 60" stroke-linecap="round"/></svg> Inscrevendo...';
+          
+          // Simulate API call
+          await new Promise(resolve => setTimeout(resolve, 1500));
+          
+          // Success UI
+          submitBtn.innerHTML = 'Inscrito! <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          submitBtn.style.backgroundColor = 'var(--color-leaf-700)';
+          submitBtn.style.borderColor = 'var(--color-leaf-700)';
+          input.value = '';
+          
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Inscrever-me <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+            submitBtn.style.backgroundColor = '';
+            submitBtn.style.borderColor = '';
+          }, 3000);
+        });
+      }
+
+      // =========================================
+      // PRODUCT CART INTERACTION (Demo)
+      // =========================================
+      document.querySelectorAll('.product-card__footer .btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          // Prevent navigation if it's a button inside card
+          if (this.tagName === 'BUTTON') e.preventDefault();
+          
+          const card = this.closest('.product-card');
+          const name = card.querySelector('.product-card__name').textContent;
+          
+          // Visual feedback
+          const originalText = this.innerHTML;
+          this.innerHTML = 'Adicionado! <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          this.style.backgroundColor = 'var(--color-leaf-700)';
+          this.style.borderColor = 'var(--color-leaf-700)';
+          
+          console.log(`[Cart Demo] Added: ${name}`);
+          
+          setTimeout(() => {
+            this.innerHTML = originalText;
+            this.style.backgroundColor = '';
+            this.style.borderColor = '';
+          }, 2000);
+        });
+      });
+
+      // =========================================
+      // SPINNER KEYFRAMES INJECTION (for form loading)
+      // =========================================
+      const style = document.createElement('style');
+      style.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
+      document.head.appendChild(style);
+
+      // =========================================
+      // INIT
+      // =========================================
+      // Trigger initial header state
+      handleHeaderScroll();
+      
+      // Re-observe on resize (for layout shifts)
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          revealElements.forEach(el => {
+            if (el.classList.contains('reveal--visible')) return;
+            // Re-check position
+            revealObserver.unobserve(el);
+            revealObserver.observe(el);
+          });
+        }, 250);
+      });
+
+    })();
+  </script>
+</body>
+</html>

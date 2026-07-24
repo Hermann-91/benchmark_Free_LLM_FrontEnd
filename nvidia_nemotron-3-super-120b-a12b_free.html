@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pé da Mata – Chocolate Premium Tree to Bar</title>
+    <style>
+        :root {
+            --cocoa-dark: #3E2723;
+            --cocoa-mid: #6D4C41;
+            --leaf-green: #8BC34A;
+            --leaf-light: #C8E6C9;
+            --bg-light: #FAFAFA;
+            --text-light: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+        html { font-size: 16px; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--cocoa-dark);
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Header */
+        header {
+            background: var(--cocoa-dark);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+        }
+        header .logo { font-size: 1.8rem; font-weight: 700; letter-spacing: 0.5px; }
+        header nav { margin-top: 0.5rem; }
+        header nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        header nav a {
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        header nav a:hover { opacity: 0.8; }
+
+        /* Hero */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1589444753682-4cfae1f0b5b2?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            color: var(--text-light);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+        .hero::after {
+            content:"";
+            inset:0;
+            position:absolute;
+            background:rgba(0,0,0,0.4);
+        }
+        .hero .content {
+            position:relative;
+            z-index:1;
+            max-width: 800px;
+            margin:0 auto;
+        }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+        .hero .btn {
+            background: var(--leaf-green);
+            color: var(--text-light);
+            padding: 0.9rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .hero .btn:hover { background: #689F38; transform: translateY(-2px); }
+
+        /* Section title */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-size: 2rem;
+            color: var(--cocoa-dark);
+            position: relative;
+        }
+        .section-title::after {
+            content:"";
+            display:block;
+            width:60px;
+            height:4px;
+            background:var(--leaf-green);
+            margin:0.5rem auto 0;
+        }
+
+        /* About */
+        .about {
+            background: var(--leaf-light);
+            padding: 4rem 0;
+        }
+        .about .grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 768px) {
+            .about .grid { grid-template-columns: 1fr 1fr; align-items: center; }
+        }
+        .about img { border-radius: 8px; box-shadow: var(--shadow); }
+        .about p { margin-top:1rem; }
+
+        /* Products */
+        .products {
+            padding: 4rem 0;
+            background: var(--bg-light);
+        }
+        .products .cards {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 600px) {
+            .products .cards { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 992px) {
+            .products .cards { grid-template-columns: repeat(3, 1fr); }
+        }
+        .card {
+            background: var(--text-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-4px); }
+        .card img { height: 180px; object-fit: cover; }
+        .card .info {
+            flex:1;
+            padding:1.5rem;
+            display:flex;
+            flex-direction:column;
+        }
+        .card h3 { margin:0 0 0.5rem; font-size:1.25rem; color:var(--cocoa-dark); }
+        .card p { flex:1; color:#555; margin-bottom:1rem; font-size:0.95rem; }
+        .card .price {
+            font-weight:700;
+            color:var(--leaf-green);
+            margin-top:auto;
+        }
+
+        /* CTA */
+        .cta {
+            background: var(--cocoa-mid);
+            color: var(--text-light);
+            text-align: center;
+            padding: 4rem 0;
+        }
+        .cta h2 { font-size:2rem; margin-bottom:1.5rem; }
+        .cta .btn {
+            background: var(--leaf-green);
+            color: var(--text-light);
+            padding:1rem 2rem;
+            border-radius:4px;
+            font-size:1.1rem;
+            font-weight:600;
+            transition: background 0.3s;
+        }
+        .cta .btn:hover { background: #689F38; }
+
+        /* Footer */
+        footer {
+            background: var(--cocoa-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding:2rem 0;
+            font-size:0.9rem;
+        }
+        footer a { color: var(--leaf-green); margin:0 0.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Pé da Mata</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#products">Produtos</a></li>
+                    <li><a href="#cta">Comprar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="content container">
+            <h1>Chocolate Tree to Bar da Bahia</h1>
+            <p>Do cacau da Mata Atlântica ao seu paladar – sabor puro, sustentável e premium.</p>
+            <a href="#cta" class="btn">Conhecer a Coleção</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Nossa História</h2>
+            <div class="grid">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80" alt="Plantio de cacau na Bahia">
+                <div>
+                    <p>Localizada em Barro Preto, Sul da Bahia, nossa fazenda pratica o cultivo agroflorestal, preservando a biodiversidade da Mata Atlântica enquanto produz cacau de origem única.</p>
+                    <p>Cada tablete é feita do grão ao produto final – Tree to Bar – garantindo rastreabilidade, qualidade e o verdadeiro sabor do terroir baiano.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Nossos Sabores</h2>
+            <div class="cards">
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80" alt="Chocolate Amargo 70%">
+                    <div class="info">
+                        <h3>Amargo 70%</h3>
+                        <p>Intenso, com notas de frutas secas e um toque de terra.</p>
+                        <div class="price">R$ 45,00</div>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1598544759040-308037d04c5e?auto=format&fit=crop&w=800&q=80" alt="Chocolate ao Leite com Castanha">
+                    <div class="info">
+                        <h3>Ao Leite + Castanha</h3>
+                        <p>Cremoso, equilibrado, com castanha de baru crocante.</p>
+                        <div class="price">R$ 42,00</div>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1601053334280-46fb3c6ec9f3?auto=format&fit=crop&w=800&q=80" alt="Chocolate Branco com Maracujá">
+                    <div class="info">
+                        <h3>Branco + Maracujá</h3>
+                        <p>Doce delicado com o aroma tropical do maracujá.</p>
+                        <div class="price">R$ 40,00</div>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
+                </article>
+                <!-- Mais cards podem ser adicionados -->
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta">
+        <div class="container">
+            <h2>Leve o Pé da Mata para Casa</h2>
+            <p>Frete grátis para pedidos acima de R$150.</p>
+            <a href="#" class="btn">Comprar Agora</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Pé da Mata. Todos os direitos reservados.</p>
+            <div>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Contato</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pé da Mata | Chocolates de Origem (Tree to Bar)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* DESIGN TOKENS & RESET */
+        :root {
+            --color-primary: #3E2723; /* Dark Cocoa */
+            --color-secondary: #5D4037; /* Warm Brown */
+            --color-accent: #2E7D3F; /* Leaf Green */
+            --color-highlight: #D4A373; /* Caramel/Earth */
+            --color-background: #F9F7F2; /* Creamy Paper */
+            --color-text-dark: #2D2424;
+            --color-text-light: #F9F7F2;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            --container-max-width: 1200px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        btn-primary {
+            background-color: var(--color-accent);
+            color: white;
+        }
+
+        btn-primary:hover {
+            background-color: #1B5E20;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        btn-outline {
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        btn-outline:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* NAVIGATION */
+        navbar {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(249, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(62, 39, 35, 0.1);
+        }
+
+        nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+            transition: var(--transition);
+        }
+
+        nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* HERO SECTION */
+        hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1548907040-4bb41d093634?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-text-light);
+            padding-top: 80px;
+        }
+
+        hero-content {
+            max-width: 800px;
+        }
+
+        hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* FEATURES / VALUE PROPOSITION */
+        features {
+            padding: 100px 0;
+            background-color: var(--color-text-light);
+        }
+
+        section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        section-title h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        section-title div {
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+            margin: 0 auto;
+        }
+
+        features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        /* PRODUCT HIGHLIGHT */
+        product-highlight {
+            padding: 100px 0;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        product-image {
+            flex: 1;
+            min-width: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+
+        product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        product-info {
+            flex: 1;
+            min-width: 400px;
+        }
+
+        tag {
+            color: var(--color-accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        product-info h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        product-info p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+        }
+
+        /* CALL TO ACTION SECTION */
+        cta-section {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #1e1413;
+            color: rgba(255,255,255,0.6);
+            padding: 60px 0 30px;
+        }
+
+        footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 50px;
+        }
+
+        footer-brand h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-heading);
+        }
+
+        footer-links h4 {
+            color: var(--color-highlight);
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        footer-links a:hover {
+            color: white;
+        }
+
+        copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            product-highlight {
+                flex-direction: column;
+            }
+            product-image,.product-info {
+                min-width: 100%;
+            }
+            nav-links {
+                display: none; /* Em um projeto real, aqui haveria um menu hambúrguer */
+            }
+        }
+
+        @media (max-width: 600px) {
+            hero h1 {
+                font-size: 2.5rem;
+            }
+            container {
+                padding: 0 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">PÉ DA MATA</a>
+            <ul class="nav-links">
+                <li><a href="#origem">Nossa Origem</a></li>
+                <li><a href="#produtos">Chocolates</a></li>
+                <li><a href="#processo">Processo</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <a href="#produtos" class="btn btn-outline" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;">Comprar</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Do Cacau à Barra: A Essência de Barro Preto</h1>
+            <p>Experimente a pureza do chocolate de origem, colhido artesanalmente no coração da Bahia.</p>
+            <div class="hero-btns">
+                <a href="#produtos" class="btn btn-primary">Descobrir Sabores</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section id="origem" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tree to Bar Experience</h2>
+                <div></div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🌳</span>
+                    <h3>Origem Controlada</h3>
+                    <p>Do pé da árvore ao seu paladar. Conhecemos cada hectare da nossa fazenda em Barro Preto.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🍫</span>
+                    <h3>Pureza Absoluta</h3>
+                    <p>Sem aditivos artificiais, apenas cacau selecionado, manteiga de cacau e o mínimo de açúcar.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🍃</span>
+                    <h3>Sustentabilidade</h3>
+                    <p>Cultivo regenerativo que respeita o ecossistema da Mata Atlântica e valoriza o produtor local.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT HIGHLIGHT -->
+    <section id="produtos" class="container">
+        <div class="product-highlight">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1606384685642-a3a18333b111?auto=format&fit=crop&q=80&w=1000" alt="Chocolate artesanal premium">
+            </div>
+            <div class="product-info">
+                <span class="tag">Edição Limitada</span>
+                <h2>O Terroir da Bahia em Cada Mordida</h2>
+                <p>Nossos chocolates capturam as notas frutadas e terrosas características do solo da Bahia. Uma experiência sensorial que conecta você diretamente com a natureza de Barro Preto.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#" class="btn btn-primary">Ver Catálogo Completo</a>
+                    <a href="#" class="btn btn-outline">Saber Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container cta-content">
+            <h2>Leve o sabor da mata para sua casa.</h2>
+            <a href="#" class="btn btn-primary" style="background-color: var(--color-highlight);">Assinar Clube de Assinatura</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Pé da Mata</h3>
+                    <p>Chocolates de origem premium, produzidos com paixão e respeito à natureza no Sul da Bahia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="#">Nossa História</a></li>
+                        <li><a href="#">Processo de Produção</a></li>
+                        <li><a href="#">Sustentabilidade</a></li>
+                        <li><a href="#">Loja Online</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Envios e Entregas</a></li>
+                        <li><a href="#">Política de Troca</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Conecte-se</h4>
+                    <p>Instagram<br>Facebook<br>WhatsApp</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Pé da Mata Chocolates. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
